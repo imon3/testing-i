@@ -21,10 +21,19 @@ describe('succeed()', () => {
 
 describe('fail()', () => {
     it('should decreased durability by 5 when enhancement is less than 15, or by 10 if durability is 15 or greater. If enhancement is greater than 16 then decrease enhancement by 1', () => {
-        const item = { durability: 4, enhancement: 14 };
+        const item = { durability: 4, enhancement: 17 };
         const fail = enhancer.fail(item);
 
         expect(fail.durability).toBe(0);
-        expect(fail.enhancement).toBe(14);
+        expect(fail.enhancement).toBe(16);
     });
 });
+
+describe('get()', () => {
+    it('should return a modified name', () => {
+        const item = { durability: 68, enhancement: 17, name: 'superSword' };
+        const get = enhancer.get(item);
+
+        expect(get.name).toBe(`[+17]superSword`)
+    })
+})

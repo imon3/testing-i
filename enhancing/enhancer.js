@@ -5,6 +5,7 @@ module.exports = {
   get,
 };
 
+// ------------ SUCCEED METHOD ---------------- 
 function succeed(item) {
   let enhancementOfItem = item.enhancement;
 
@@ -23,6 +24,7 @@ function succeed(item) {
   };
 };
 
+// ------------ FAIL METHOD ---------------- 
 function fail(item) {
   let durabilityOfItem = item.durability;
   let enhancementOfItem = item.enhancement;
@@ -38,7 +40,12 @@ function fail(item) {
       }
     } else if (enhancementOfItem >= 15) {
       durabilityOfItem = durabilityOfItem - 10;
-      return durabilityOfItem;
+      if (durabilityOfItem < 0) {
+        durabilityOfItem = 0;
+        return durabilityOfItem
+      } else {
+        return durabilityOfItem;
+      }
     };
   };
 
@@ -75,5 +82,19 @@ function repair(item) {
 };
 
 function get(item) {
-  return { ...item };
+  let newName = item.name;
+  let enhancementItem = item.enhancement;
+
+  const getNewName = () => {
+    if (enhancementItem === 0) {
+      return newName;
+    } else {
+      return newName = `[+${enhancementItem}]` + newName;
+    }
+  }
+
+  return {
+    ...item,
+    name: getNewName()
+  };
 };
