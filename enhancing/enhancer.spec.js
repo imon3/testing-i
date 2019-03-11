@@ -12,10 +12,10 @@ describe('repair()', () => {
 
 describe('succeed()', () => {
     it('should enhance the item by 1', () => {
-        const item = { enhancement: 10 };
+        const item = { enhancement: 20 };
         const succeed = enhancer.succeed(item);
 
-        expect(succeed.enhancement).toBe(11);
+        expect(succeed.enhancement).toBe(20);
     });
 });
 

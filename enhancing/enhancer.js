@@ -9,7 +9,9 @@ function succeed(item) {
   let enhancementOfItem = item.enhancement;
 
   const enhanced = () => {
-    if (enhancementOfItem >= 0 && enhancementOfItem < 20) {
+    if (enhancementOfItem === 20) {
+      return enhancementOfItem
+    } else if (enhancementOfItem >= 0 && enhancementOfItem < 20) {
       enhancementOfItem = enhancementOfItem + 1;
       return enhancementOfItem;
     };
