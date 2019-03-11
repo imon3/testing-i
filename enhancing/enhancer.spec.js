@@ -8,5 +8,13 @@ describe('repair()', () => {
 
         expect(repair.durability).toBe(100);
     });
+});
 
+describe('succeed()', () => {
+    it('should enhance the item by 1', () => {
+        const item = { enhancement: 10 }
+        const succeed = enhancer.succeed(item);
+
+        expect(succeed.enhancement).toBe(11)
+    })
 })
