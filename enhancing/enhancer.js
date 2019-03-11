@@ -6,7 +6,16 @@ module.exports = {
 };
 
 function succeed(item) {
-  return { ...item };
+  return {
+    ...item,
+    enhancement: () => {
+      if (item.enhancement === 20) {
+        return item.enhancement;
+      } else if (item.enhancement >= 0 && item.enhancement < 20) {
+        return item.enhancement += 1;
+      }
+    }
+  };
 }
 
 function fail(item) {
@@ -14,9 +23,17 @@ function fail(item) {
 }
 
 function repair(item) {
+  let durabilityNum = item.durability;
+  const num = () => {
+    if (durabilityNum >= 0 && durabilityNum < 100) {
+      durabilityNum = 100;
+      return durabilityNum;
+    }
+  }
+
   return {
     ...item,
-    durability: 100
+    durability: num()
   };
 }
 
